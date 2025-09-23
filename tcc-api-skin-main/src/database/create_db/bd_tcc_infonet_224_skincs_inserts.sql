@@ -1,30 +1,39 @@
--- Inserindo Usuários
-INSERT INTO USUARIOS (usu_nome, usu_email, usu_senha, usu_steamid, usu_saldo, usu_pix, usu_cpf, usu_adm) VALUES
-('João Silva', 'joao@email.com', 'senha123', 'STEAM_123456', 100.00, 'joao@pix.com', '123.456.789-01', FALSE),
-('Maria Oliveira', 'maria@email.com', 'senha456', 'STEAM_654321', 250.50, 'maria@pix.com', '987.654.321-00', FALSE),
-('Admin Master', 'admin@email.com', 'admin123', 'STEAM_111111', 500.00, 'admin@pix.com', '111.222.333-44', TRUE);
+INSERT INTO usuarios 
+(usu_id, usu_nome, usu_email, usu_senha, usu_steamid, usu_saldo, usu_pix, usu_cpf, usu_adm)
+VALUES
+(1, 'João Silva', 'joao.silva@example.com', 'senha123', 'STEAM_111111111', 150.75, 'joaosilva@pix.com', '12345678901', 0),
+(2, 'Maria Oliveira', 'maria.oliveira@example.com', 'senha456', 'STEAM_222222222', 300.00, 'mariaoliveira@pix.com', '12345678902', 0),
+(3, 'ADMIN', 'ADMIN.santos@example.com', '123', 'ADMIN_333333333', 50.00, 'ADMIN@pix.com', '12345678903', 1);
 
--- Inserindo Skins
-INSERT INTO SKINS (usu_id, skin_nome, skin_cond, skin_preco, skin_img, skin_status, skin_float) VALUES
-(1, 'AK-47 | Redline', 'Field-Tested', 75.00, 'ak_redline.png', 'disponível', 0.256),
-(1, 'AWP | Asiimov', 'Battle-Scarred', 150.00, 'awp_asiimov.png', 'disponível', 0.750),
-(2, 'M4A4 | Howl', 'Minimal Wear', 1000.00, 'm4a4_howl.png', 'reservado', 0.120),
-(2, 'Glock-18 | Fade', 'Factory New', 500.00, 'glock_fade.png', 'vendido', 0.010);
 
--- Inserindo Transações
-INSERT INTO TRANSACOES (usu_id, skin_id, trans_valor, trans_status) VALUES
-(2, 1, 75.00, 'pendente'),   -- Maria comprando skin do João
-(1, 3, 1000.00, 'concluído'), -- João comprando skin da Maria
-(3, 2, 150.00, 'cancelado');  -- Admin tentou comprar AWP
+INSERT INTO skins
+(skin_id, usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_img, skin_status, skin_float)
+VALUES
+(1, 1, 'AK-47 | Redline', 'Bem Usada', 25000, '2025-09-01', 'ak47_redline.jpg', 'disponível', 000.10),
+(2, 2, 'M4A1-S | Hyper Beast', 'Nova de Caixa', 32050, '2025-09-03', 'm4a1_hyperbeast.jpg', 'vendido', 000.03),
+(3, 3, 'AWP | Dragon Lore', 'Pouco Usada', 150000, '2025-09-05', 'awp_dragonlore.jpg', 'reservado', 000.08);
 
--- Inserindo Ocorrências
-INSERT INTO OCORRENCIAS (trans_id, oco_valor, oco_situacao) VALUES
-(1, 75.00, 'Aguardando pagamento PIX'),
-(2, 1000.00, 'Pagamento confirmado'),
-(3, 150.00, 'Transação cancelada por falta de saldo');
+INSERT INTO avaliacoes 
+(av_id, usu_id, av_nota, av_comentario, av_moderacao) 
+VALUES
+(1, 1, 5, 'Ótimo usuário, negociação rápida e sem problemas.', 1),
+(2, 2, 4, 'Boa experiência, apenas um pequeno atraso no pagamento.', 1),
+(3, 3, 3, 'Negociação razoável, poderia ter sido mais clara.', 0),
+(4, 4, 5, 'Excelente! Tudo conforme combinado.', 1),
+(5, 5, 2, 'Não recomendo, tive problemas durante a transação.', 0);
 
--- Inserindo Avaliações
-INSERT INTO AVALIACOES (usu_id, av_nota, av_comentario, av_moderacao) VALUES
-(1, 5, 'Ótima experiência, vendedor rápido!', FALSE),
-(2, 4, 'Boa negociação, mas demorou um pouco.', FALSE),
-(3, 3, 'Sistema precisa melhorar.', TRUE);
+
+INSERT INTO transacoes (trans_id, usu_id, skin_id, trans_valor, trans_status, trans_data)
+VALUES
+(201, 1, 1, 150.00, 'Concluída', '2025-09-01 15:00:00'),
+(202, 2, 2, 320.50, 'Pendente', '2025-09-03 10:20:00'),
+(203, 3, 3, 75.25,  'Cancelada', '2025-09-05 18:45:00');
+
+
+
+INSERT INTO ocorrencias
+(oco_id, trans_id, oco_valor, oco_situacao, oco_data)
+VALUES
+(1, 201, 250.00, 'Pendente', '2025-09-01 14:32:00'),
+(2, 202, 500.50, 'Concluída', '2025-09-05 09:10:00'),
+(3, 203, 75.25, 'Cancelada', '2025-09-07 18:45:00');
