@@ -1,4 +1,3 @@
-
 -- Tabela de Usuários
 CREATE TABLE USUARIOS (
     usu_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,7 +8,8 @@ CREATE TABLE USUARIOS (
     usu_saldo DECIMAL(10,2) DEFAULT 0.00,
     usu_pix VARCHAR(100) UNIQUE,
     usu_cpf VARCHAR(14) UNIQUE,
-    usu_adm BOOLEAN DEFAULT FALSE
+    usu_adm BOOLEAN DEFAULT FALSE,
+    usu_img VARCHAR(255)
 );
 
 -- Tabela de Skins
