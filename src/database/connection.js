@@ -24,7 +24,7 @@ let pool;
 
 const initializeDatabase = async () => {
     try {
-        // Cria a pool de conexões
+        // Cria a pool de conexõe
         pool = mysql.createPool(config);
 
         // Testa a conectividade com uma conexão simples

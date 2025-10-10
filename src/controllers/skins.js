@@ -1,24 +1,32 @@
-const db = require('../database/connection')
+const db = require('../database/connection');
+const { gerarUrl } = require('../utils/gerarUrl');
 
 module.exports = {
     async listarSkins(request, response) {
         try {
 
-            const sql = 'SELECT skin_id, usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float FROM skins;';
+            const sql = 'SELECT skin_id, usu_id, skin_nome, skin_img, skin_cond, skin_preco, skin_data, skin_status, skin_float FROM skins;';
 
             const [rows] = await db.query(sql);
+            
+            const dados = rows.map((rows) => ({
+                ...rows,
+                skin_img: gerarUrl(rows.skin_img, 'skins', 'padrao.png')
+            }));
+
+            const nItens = dados.length;
 
             return response.status(200).json({
                 sucesso: true,
                 mensagem: 'Lista de skins.',
-                itens: rows.length,
-                dados: rows
+                nItens,
+                dados
             });
         } catch (error) {
             return response.status(500).json({
                 sucesso: false,
                 mensagem: 'Erro na requisição',
-                dados: error.menssage
+                dados: error.message
             });
         }
     },
