@@ -4,14 +4,22 @@ const { gerarUrl } = require('../utils/gerarUrl');
 module.exports = {
     async listarSkins(request, response) {
         try {
+            
+            const { id } = request.query;
 
-            const sql = 'SELECT skin_id, usu_id, skin_nome, skin_img, skin_cond, skin_preco, skin_data, skin_status, skin_float FROM skins;';
+            const sql = `
+                SELECT sk.skin_id, sk.usu_id, sk.skin_nome, sk.skin_img, sk.skin_cond, sk.skin_preco, sk.skin_data, sk.skin_status, sk.skin_float, us.usu_nome, us.usu_img 
+                FROM skins sk 
+                INNER JOIN usuarios us ON sk.usu_id = us.usu_id 
+                ${id ? 'WHERE sk.skin_id = ?' : ''}
+            `;  
 
-            const [rows] = await db.query(sql);
+            const [rows] = await db.query(sql, id ? [id] : []);
             
             const dados = rows.map((rows) => ({
                 ...rows,
-                skin_img: gerarUrl(rows.skin_img, 'skins', 'padrao.png')
+                skin_img: gerarUrl(rows.skin_img, 'skins', 'padrao.png'), 
+                usu_img: gerarUrl(rows.usu_img, 'fotos-perfil', 'padrao.png')
             }));
 
             const nItens = dados.length;
@@ -126,6 +134,42 @@ module.exports = {
                 dados: error.menssage
             });
         }
-    }
+    }, 
+    async listarSkinsUsuario(request, response) {
+        try {
+            
+            const { id } = request.query;
+
+            const sql = `
+                SELECT sk.skin_id, sk.usu_id, sk.skin_nome, sk.skin_img, sk.skin_cond, sk.skin_preco, sk.skin_data, sk.skin_status, sk.skin_float, us.usu_nome, us.usu_img 
+                FROM skins sk 
+                INNER JOIN usuarios us ON sk.usu_id = us.usu_id 
+                ${id ? 'WHERE us.usu_id = ?' : ''}
+            `;  
+
+            const [rows] = await db.query(sql, id ? [id] : []);
+            
+            const dados = rows.map((rows) => ({
+                ...rows,
+                skin_img: gerarUrl(rows.skin_img, 'skins', 'padrao.png'), 
+                usu_img: gerarUrl(rows.usu_img, 'fotos-perfil', 'padrao.png')
+            }));
+
+            const nItens = dados.length;
+
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: 'Lista de skins.',
+                nItens,
+                dados
+            });
+        } catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição',
+                dados: error.message
+            });
+        }
+    },
 }
 
