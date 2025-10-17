@@ -26,15 +26,18 @@ module.exports = {
     async cadastrarUsuarios(request, response) {
         try {
 
-            const {nome, email, senha, steamid, saldo, pix, cpf, adm} = request.body;
-        
+            // USUARIO STEAM, CPF, EMAIL DUPLICADO
+
+            const {usu_nome, usu_email, usu_senha, usu_steamid, usu_cpf, usu_adm = false} = request.body;
+            
+            
             //instrução SQL
-            const sql = `INSERT INTO usuarios (usu_nome, usu_email, usu_senha, usu_steamid, usu_saldo, usu_pix, usu_cpf, usu_adm)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+            const sql = `INSERT INTO usuarios (usu_nome, usu_email, usu_senha, usu_steamid, usu_cpf, usu_adm)
+             VALUES (?, ?, ?, ?, ?, ?);
              `;
 
              //definição dos dados a serem inseridos em um array
-                const values = [nome, email, senha, steamid, saldo, pix, cpf, adm];
+                const values = [usu_nome, usu_email, usu_senha, usu_steamid, usu_cpf, usu_adm];
 
              //execução da instrução SQL passando os parametros
                 const [result] = await db.query(sql, values);
@@ -42,15 +45,15 @@ module.exports = {
              //indentificação do id do registro inserido
                 const dados = {
                     id: result.insertId,
-                    nome,
-                    email,
-            
+                    nome: usu_nome,
+                    email: usu_email,
+
                 };
 
 
             return response.status(200).json({
                 sucesso: true,
-                mensagem: 'Cadastrar usuários',    
+                mensagem: 'Cadastro de usuário realizado com sucesso!',    
                 dados: dados
             });
         } catch (error) {
