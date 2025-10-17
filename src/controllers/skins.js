@@ -40,23 +40,22 @@ module.exports = {
     },
     async cadastrarSkins(request, response) {
         try {
-            const {usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float} = request.body;
+            const {usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img} = request.body;
 
             const sql = `
                 INSERT INTO skins 
-                    (usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float)
+                    (usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img)
                 VALUES
                     (?, ?, ?, ?, ?, ?, ?);
                 `;
 
-                const values = [usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float];
+                const values = [usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img];
 
                 const [result] = await db.query(sql, values);
 
                 const dados = {
                     id: result.insertId,
                     skin_nome,
-                    skin_data
                 }
 
             return response.status(200).json({
