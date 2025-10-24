@@ -41,10 +41,11 @@ module.exports = {
     async cadastrarSkins(request, response) {
         try {
             const {usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img} = request.body;
+            const imagem = request.file;
 
             const sql = `
                 INSERT INTO skins 
-                    (usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img)
+                    (usu_id, skin_nome, skin_cond, skin_preco, skin_status, skin_float, skin_img) 
                 VALUES
                     (?, ?, ?, ?, ?, ?, ?);
                 `;
@@ -68,7 +69,7 @@ module.exports = {
             return response.status(500).json({
                 sucesso: false,
                 mensagem: 'Erro na requisição',
-                dados: error.menssage
+                dados: error.message
             });
         }
     },
