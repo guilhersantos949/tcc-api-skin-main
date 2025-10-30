@@ -10,6 +10,7 @@ router.get('/usuarios', usuariosController.listarUsuarios);
 router.post('/usuarios', usuariosController.cadastrarUsuarios);
 router.patch('/usuarios', usuariosController.editarUsuarios);
 router.delete('/usuarios', usuariosController.apagarUsuarios);
+router.get('/login', usuariosController.login);
 
 //avaliacoes
 router.get('/avaliacoes', avaliacoesController.listarAvaliacoes);

@@ -110,4 +110,41 @@ module.exports = {
             });
         }
     },
+    async login (request, response) {
+        try {
+            const {usu_email, usu_senha} = request.query;
+
+            const sql = 'SELECT usu_id, usu_email, usu_senha, usu_adm FROM usuarios WHERE usu_email = ? AND usu_senha = ?;';
+            const values = [usu_email, usu_senha];
+            const [rows] = await db.query(sql, values);
+            const nItens = rows.length;
+
+            if (nItens < 1){
+                return response.status(403).json({
+                    sucesso: false,
+                    mensagem: 'Usuário ou senha inválidos.',
+                    dados: null
+                });
+            }
+
+            const dados = rows.map((row) => ({
+                id: row.usu_id,
+                email: row.usu_email,
+                adm: row.usu_adm
+            }));
+
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: 'Login realizado com sucesso.',
+                dados
+            });
+        } catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição.',
+                dados: error.message
+            });
+        }
+    },
+            
 }
