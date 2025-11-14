@@ -1,0 +1,603 @@
+type: collection.insomnia.rest/5.0
+name: infonet_224_skincs
+meta:
+  id: wrk_c239baaba06945fba196e859bf988fb5
+  created: 1743461717267
+  modified: 1757458328090
+  description: ""
+collection:
+  - name: usuarios
+    meta:
+      id: fld_ae0c7a51598845efb0f3d7d0a61a30da
+      created: 1743461773682
+      modified: 1757458328048
+      sortKey: -1743461773682
+      description: ""
+    children:
+      - url: http://localhost:3333/usuarios
+        name: listar
+        meta:
+          id: req_c6138165d87d47b9984fa7c75736ff55
+          created: 1743463470713
+          modified: 1760657585867
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470713
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/usuarios
+        name: cadastrar
+        meta:
+          id: req_ec3c7503ef734b9e8aeaf9cfccabbe3f
+          created: 1743463496069
+          modified: 1760658394815
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470663
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "usu_cpf"
+            : 
+            "692.555.525-55",
+            "usu_email"
+            : 
+            "guilhermemans@outlookkkkkkk.com",
+            "usu_nome"
+            : 
+            "guilhermeHomem",
+            "usu_senha"
+            : 
+            "Gui090724-",
+            "usu_steamid"
+            : 
+            "LoboRefinadoooooooo"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/usuarios
+        name: editar
+        meta:
+          id: req_2676bb3d77ab466889f281ca00c063a3
+          created: 1743463535782
+          modified: 1757974401870
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470613
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/login?usu_email=guilherme@example.com&usu_senha=senha123
+        name: apagar
+        meta:
+          id: req_d07a57cdd47d476bb2221296e0b453f4
+          created: 1743463546197
+          modified: 1761779937850
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470563
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/usuario-perfil?usu_id=1
+        name: perfil
+        meta:
+          id: req_493af3f698ec4e4aa66e36da663f9efd
+          created: 1763080437469
+          modified: 1763080474749
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470700.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: avaliacoes
+    meta:
+      id: fld_31e7b8a157124c99be281faa115c5090
+      created: 1743463575481
+      modified: 1757458328008
+      sortKey: -1743461773632
+      description: ""
+    children:
+      - url: http://localhost:3333/avaliacoes
+        name: listar
+        meta:
+          id: req_efdd71cf514640319ac41f69d4a645c6
+          created: 1743463575482
+          modified: 1757458328085
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470713
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacoes
+        name: cadastrar
+        meta:
+          id: req_1d0f550c09e146b9a579e356e15233aa
+          created: 1743463575483
+          modified: 1757458328061
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470663
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacoes
+        name: editar
+        meta:
+          id: req_8c82b4dc0bbe4dc39f624ea7e1f82575
+          created: 1743463575483
+          modified: 1757458328075
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470613
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/avaliacoes
+        name: apagar
+        meta:
+          id: req_4e519a03de9d4e7caafc479a7c1d82af
+          created: 1743463575485
+          modified: 1757458328071
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470563
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: ocorrencias
+    meta:
+      id: fld_9bf1ceda8d1940fead405996a1626b87
+      created: 1743463912824
+      modified: 1757458328045
+      sortKey: -1743461773582
+      description: ""
+    children:
+      - url: http://localhost:3333/ocorrencias
+        name: listar
+        meta:
+          id: req_f322689eab3746bb8d2bd12c35d34322
+          created: 1743463912826
+          modified: 1757458328089
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470713
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/ocorrencias
+        name: cadastrar
+        meta:
+          id: req_0acef980861244ddb7c87edeef87382e
+          created: 1743463912827
+          modified: 1757458328052
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470663
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "trans_id": 2,
+            "oco_valor": 200.00,
+            "oco_situacao": "efetuada",
+            "oco_data": "2025-04-25"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/ocorrencias/2
+        name: editar
+        meta:
+          id: req_8b13a0a93c9e4c41a227d9a9f6d11cea
+          created: 1743463912829
+          modified: 1757458328073
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470613
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"oco_valor": 400.00,
+            	"oco_situacao":"efetuada" ,
+            	"oco_data":"2025-05-05" 
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/ocorrencias
+        name: apagar
+        meta:
+          id: req_c8266ab72de0452d889030bec46fb2e2
+          created: 1743463912830
+          modified: 1757458328078
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470563
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: skins
+    meta:
+      id: fld_b87f8aaf013244c5ad88c3bffd7b071f
+      created: 1743463995496
+      modified: 1757458328050
+      sortKey: -1743461773582
+      description: ""
+    children:
+      - url: http://localhost:3333/skins
+        name: listar
+        meta:
+          id: req_452f2607a6a5437ab87ec77909aec789
+          created: 1743463995498
+          modified: 1761261582697
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470713
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/skins
+        name: cadastrar
+        meta:
+          id: req_1a0503b57c45430c830bd9c8547530c6
+          created: 1743463995499
+          modified: 1761267779828
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470663
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"usu_id": 2,
+            	"skin_nome": "USP",
+            	"skin_cond": "Boa",
+            	"skin_preco": 7.00,
+            	"skin_status": "disponível",
+            	"skin_float": 0.0321, 
+            	"skin_img": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/skins/3
+        name: editar
+        meta:
+          id: req_2ee098e77d7e4443aab5d28b0a847fef
+          created: 1743463995501
+          modified: 1757458328067
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470613
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"skin_nome": "AUG",
+            	"skin_cond": "Boa",
+            	"skin_preco": 75.00,
+            	"skin_data": "2025-05-05",
+            	"skin_status": "disponível",
+            	"skin_float": 0.0043
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/skins/3
+        name: apagar
+        meta:
+          id: req_16556f57735e44218a179cb83908e4e4
+          created: 1743463995502
+          modified: 1757458328054
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470563
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/skins-usuario?id=1
+        name: listar-skin-usuario
+        meta:
+          id: req_99eb563f7f1f4fc1a57de9f433cc4bf6
+          created: 1760489167205
+          modified: 1761786713318
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470688
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: transacoes
+    meta:
+      id: fld_3b0278844158480b82b249f0e8184539
+      created: 1743464231965
+      modified: 1757458328025
+      sortKey: -1743461773582
+      description: ""
+    children:
+      - url: http://localhost:3333/transacoes
+        name: listar
+        meta:
+          id: req_d6e00d369b6a44aca46a402b43dba0a6
+          created: 1743464231966
+          modified: 1757458328082
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470713
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/transacoes
+        name: cadastrar
+        meta:
+          id: req_2953c5ccf0f442ca89c88469abfbab6a
+          created: 1743464231968
+          modified: 1757458328064
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470663
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/transacoes
+        name: editar
+        meta:
+          id: req_f1b745941b99430d9a25cf09655a2ea6
+          created: 1743464231969
+          modified: 1757458328087
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470613
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/transacoes
+        name: apagar
+        meta:
+          id: req_17bcdab9d06f42889c8534e84b111174
+          created: 1743464231971
+          modified: 1757458328056
+          isPrivate: false
+          description: ""
+          sortKey: -1743463470563
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7574e69cd8eb80ba18dc59a27155e62360ca362b
+    created: 1757458333192
+    modified: 1757458333192
+environments:
+  name: Base Environment
+  meta:
+    id: env_7574e69cd8eb80ba18dc59a27155e62360ca362b
+    created: 1743461717270
+    modified: 1757458327950
+    isPrivate: false

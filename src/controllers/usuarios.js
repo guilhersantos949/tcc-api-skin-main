@@ -1,5 +1,5 @@
 const db = require('../database/connection');
-
+const { gerarUrl } = require('../utils/gerarUrl');
 
 module.exports = {
     async listarUsuarios(request, response) {
@@ -137,6 +137,43 @@ module.exports = {
                 sucesso: true,
                 mensagem: 'Login realizado com sucesso.',
                 dados
+            });
+        } catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição.',
+                dados: error.message
+            });
+        }
+    }, 
+        async perfilUsuario(request, response) {
+        try {
+
+            const {usu_id} = request.query;
+
+            const sqlUsu = `
+                            SELECT usu_nome, usu_email, usu_steamid, usu_saldo, usu_img FROM usuarios 
+                            WHERE usu_id = ?;
+                        `; 
+
+            const sqlContSkin = `
+                            SELECT COUNT(*) AS nSkins FROM skins 
+                            WHERE usu_id = ?;
+                        `;                        
+            
+            const [rows] = await db.query(sqlUsu, [usu_id]); 
+            const [[{ nSkins }]] = await db.query(sqlContSkin, [usu_id]); 
+
+            const usuario = rows.map((rows) => ({
+                ...rows,
+                usu_img: gerarUrl(rows.usu_img, 'fotos-perfil', 'padrao.png')
+            }));
+
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: 'Lista de usuários',    
+                itens: rows.length,
+                dados: { usuario: usuario, nSkins }
             });
         } catch (error) {
             return response.status(500).json({
